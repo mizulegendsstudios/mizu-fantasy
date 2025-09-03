@@ -18,11 +18,11 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
-        echo "source $PWD/emsdk_env.sh" >> $GITHUB_ENV
+        echo ". $PWD/emsdk_env.sh" >> $GITHUB_ENV
 
     - name: Compile C to WASM
       run: |
-        source emsdk/emsdk_env.sh
+        . ./emsdk/emsdk_env.sh
         emcc docs/main.c -o docs/main.js -s WASM=1 -s MODULARIZE=1 -s 'ENVIRONMENT=web'
 
     - name: Deploy to GitHub Pages
