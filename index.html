@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo C con WASM</title>
+</head>
+<body>
+  <h1>Ejecutando C en el navegador 🧠</h1>
+  <pre id="output"></pre>
+
+  <script src="main.js"></script>
+  <script>
+    const output = document.getElementById("output");
+
+    Module().then((instance) => {
+      instance.callMain();
+      output.textContent = "¡Código C ejecutado con éxito!";
+    });
+  </script>
+</body>
+</html>
