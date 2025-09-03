@@ -18,12 +18,12 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
-        echo ". $PWD/emsdk_env.sh" >> $GITHUB_ENV
 
     - name: Compile C to WASM
       run: |
-        . ./emsdk/emsdk_env.sh
+        source ./emsdk/emsdk_env.sh
         emcc docs/main.c -o docs/main.js -s WASM=1 -s MODULARIZE=1 -s 'ENVIRONMENT=web'
+      shell: bash
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
